@@ -1,3 +1,4 @@
+from collections import deque
 #Sorting
 
 def bubble_sort(lst):
@@ -14,12 +15,14 @@ def bubble_sort(lst):
         made_swap = False
 
         for item in xrange(len(lst) - (1 + i)):
+
             # Uses how many items we've already checked in order to optimize by not recomparing those
             if lst[item] > lst[item + 1]:
 
                 # Pair out of order, swap
                 lst[item], lst[item + 1] = lst[item + 1], lst[item]
                 made_swap = True
+
         if not made_swap:
             break
 
@@ -35,16 +38,20 @@ def merge_lists(list1, list2):
 
     sorted_list = []
 
+    # If both lists still have items to be sorted
     while list1 and list2:
         first_1 = list1[0]
         first_2 = list2[0]
         if first_1 < first_2:
             sorted_list.append(first_1)
             list1.pop(0)
+            # Using pop from index 0 - inefficent runtime and should be improved
+
         if first_2 < first_1:
             sorted_list.append(first_2)
             list2.pop(0)
 
+    # To address case where one list is empty, while the other list has items left
     while list1:
         first1 = list1.pop(0)
         sorted_list.append(first1)
@@ -68,36 +75,32 @@ def merge_sort(lst):
     [0, 1, 2, 3, 6, 9]
     """
     
+    # Base case - list of length 1 is sorted
     if len(lst) == 1:
-        return lst[0]
+        return lst
 
-    split = len(lst) / 2
+    # Splitting in half to eventually reduce down to base case
+    split = int(len(lst) / 2)
 
-    right = lst[split:]
-    left = lst[:split]
-
-    merge_sort(right)
-    merge_sort(left)
+    right = merge_sort(lst[split:])
+    left = merge_sort(lst[:split])
 
     sorted_list = []
 
+    # While both lists remain
     while right and left:
-        right_1 = right[0]
-        left_1 = left[0]
-        if right_1 < left_1:
-            sorted_list.append(right_1)
-            right.pop(0)
-        if left_1 < right_1:
-            sorted_list.append(left_1)
-            right.pop(0)
+        if right[0] < left[0]:
+            sorted_list.append(right.pop(0))
 
+        elif left[0] < right[0]:
+            sorted_list.append(left.pop(0))
+
+    # When one list remains
     while right:
-        right_1 = right.pop(0)
-        sorted_list.append(right_1)
+        sorted_list.append(right.pop(0))
 
     while left:
-        left_1 = left.pop(0)
-        sorted_list.append(left_1)
+        sorted_list.append(left.pop(0))
 
     return sorted_list
 

@@ -2,6 +2,8 @@
 # Recursion #
 # --------- #
 
+
+
 # 1. Write a function that uses recursion to print each item in a list.
 def print_item(my_list, i=0):
     """Prints each item in a list recursively.
@@ -44,9 +46,12 @@ def print_all_tree_data(tree):
 
     """
     if not tree.children:
-        return tree
+        return tree.data
 
-    return print_all_tree_data(tree.children)
+    print tree.data
+
+    for child in tree.children:
+        print print_all_tree_data(child)
 
 # 3. Write a function that uses recursion to find the length of a list.
 
@@ -83,11 +88,16 @@ def num_nodes(tree):
         >>> num_nodes(one)
         3
     """
+    # For the current Node
+    counter = 1
 
     if not tree.children:
-        return 0
+        return 1
 
-    return num_nodes(tree.children) + 1
+    for child in tree.children:
+        counter += num_nodes(child)
+
+    return counter
 
 #####################################################################
 # END OF ASSIGNMENT: You can ignore everything below.
