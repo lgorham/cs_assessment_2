@@ -1,0 +1,74 @@
+Recursion:
+    1) Recursion is the act of a function calling itself, in order to break down the problem into smaller pieces to answer the larger problem
+    2) A base case is necessary in order for the recursion to stop - sort of like breaking out of the loop. If you do not have a base case the function will never return a value, that can then bubble up through the recursive calls and provide an answer for the larger problem
+    * Maybe come back to this - it's worded awkwardly
+
+
+Graphs:
+    1) Graphs are a series of nodes, connected by edges that link the nodes together
+    2) Unlike trees, in graphs a node can have multiple parents - which can lead to cyclical relationships. In trees however, each node can only have one parent, and therefore there is a necessary directionality to trees that isn't necessarily true for graphs (although they can be directed)
+
+Performace of Different Data Structures:
+- Python List (Array):
+    - Add-L: O(n)
+    - Pop-L: 0(n)
+    - Pop-R: 0(1)
+- Linked List:
+    - Indexing: 0(n)
+    - Search: 0(n)
+    - Add-R: 0(1)
+    - Add-L: 0(1)
+    - Pop-R: 0(n)
+    - Pop-L: 0(1)
+- Doubly-Linked List:
+    - Indexing: 0(n)
+    - Search: 0(n)
+    - Add-R: 0(1)
+    - Add-L: 0(1)
+    - Pop-R: 0(1)
+    - Pop-L: 0(1)
+- Queue (As Array):
+    - Add-R: 0(1)
+    - Pop-L: 0(n)
+- Queue (As a LL/DLL):
+    - Add-R: 0(1)
+    - Pop-L: 0(1)
+- Stack:
+    - Add-R: 0(1)
+    - Pop-R: 0(1)
+-Deque (as DLL):
+    - Add-R: 0(1)
+    - Add-L: 0(1)
+    - Pop-L: 0(1)
+    - Pop-R: 0(1)
+
+Runtime and Memory:
+- Set:
+    - Get: 0(1)
+    - Add: 0(1)
+    - Delete: 0(1)
+    - Iterate: 0(n)
+    - Memory: medium
+- Binary Search Tree:
+    - Get: 0(log n)
+    - Add: 0(n)
+    - Delete: 0(n)
+    - Iterate: 0(1) 
+    - Memory: low
+- Tree:
+    - Get: 0(n)
+    - Add: 0(1)
+    - Delete: 0(1)
+    - Iterate: 0(1)
+
+Sorting:
+    1) Bubble Sort: takes the first two items and compares which one is highest - and then places them in that order, with the larger item closer to the end. Then compares the higher one from that pair with the next item, and does the same thing. This creates a process where the highest numbers 'bubble' to the top of the list. In a non-optimized version of Bubble Sort you have to go through this same processs until each number has been compared against every other number in the list, but there are ways to make this slightly faster walltime for nearly sorted lists. However, the runtime is still 0(n^2) due to worst case
+
+    2)  Merge Sort: takes two sorted lists, pops off the first value of each list and compares them and places them in order in sorted list. Repeats this process with the following first items, until the list is entirely sorted. Merge sort is 0(n log n) and lends itself well to recursive solutions
+
+    3) Quick Sort: select a pivot (one of the items in your list) and then each iteration compare whether a number is higher or lower than the pivot and place them accordingly, so that eventually all the items before the pivot are lower than the pivot, and all the items after the pivot are higher. This also has a runtime of 0(n log n), like Merge Sort.
+
+Git Branching:
+    1) Git Branching is useful whenever you are working on a code base, but want to keep your production copy functional. Using git branching you can have your master production branch that is only updates when all tests are completed and the code is ready for deployment, while also having a (or many) development branch to keep working on. Branching is also helpful for working on teams, and allows multiple people to be working on their own branches at once
+
+    2) A pull request is a way to tell the code base owner that you have submitted changes to a Github repository. This does not automatically merge the changes in, but merely notifies the owner, so that they can review the code and merge if they accept the changes you've implememnted
